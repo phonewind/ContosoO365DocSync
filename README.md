@@ -56,7 +56,7 @@ Contoso O365 Doc Sync Code Sample
 
 2. Click *App Registrations* on the left navigation and then click + New application registration button.
 
-   ![](Images/Add AAD App.png)
+   ![](Images/AddAADApp.png)
 
 3. Click on the name of your Azure AD directory & then click *Applications* in the tabs menu.
 
