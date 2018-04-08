@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "hostingPlanName": {
+            "value": "contosoo365docsyncprd"
+        },
+        "administratorLogin": {
+            "value": "contosoo365docsync"
+        },
+      "databaseName": {
+        "value": "contosoo365docsyncprd"
+      },
+        "skuName": {
+            "value": "F1"
+        },
+        "administratorLoginPassword": {
+            "value": "Dev@Canviz.com"
+        },
+        "webSiteName": {
+            "value": "msfincontosoo365docsyncprd"
+        },
+        "sqlserverName": {
+            "value": "msfincontosoo365docsyncprd"
+        },
+        "storageAccountName": {
+            "value": "msfincontosoo365docsyncprd"
+        },
+        "edition": {
+            "value": "Basic"
+        },
+        "requestedServiceObjectiveName": {
+            "value": "Basic"
+        },
+        "appInsightName": {
+            "value": "msfincontosoo365docsyncprd"
+        }
+    }
+}

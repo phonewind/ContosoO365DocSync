@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "hostingPlanName": {
+            "value": "contosoo365docsyncdev"
+        },
+        "administratorLogin": {
+            "value": "contosoo365docsyncd"
+        },
+      "databaseName": {
+        "value": "contosoo365docsyncd"
+      },
+        "skuName": {
+            "value": "F1"
+        },
+        "administratorLoginPassword": {
+            "value": "contosoo365!docsyncd"
+        },
+        "storageAccountName": {
+            "value": "msfincontosoo365docsyncd"
+        },
+        "webSiteName": {
+            "value": "msfincontosoo365docsyncd"
+        },
+        "sqlserverName": {
+            "value": "msfincontosoo365docsyncd"
+        },
+        "appInsightName": {
+            "value": "msfincontosoo365docsyncd"
+        }
+    }
+}
