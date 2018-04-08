@@ -64,19 +64,17 @@ Contoso O365 Doc Sync Code Sample
 
    ![](Images/ActiveDirectoryApplications.png)
 
-6. In the Add Application wizard, enter a name of *ContosoO365DocSync.Web* and choose the type *Web Application and/or Web API*. Click the arrow to the next page of the wizard.
+4. In the Add Application wizard, enter a name of SmartLink.Web and choose the type Web Application and/or Web API. Click the arrow to the next page of the wizard.
 
-7. In the *App Properties* page, enter a *SIGN-ON URL* 
-
-   `https://<websitename>.azurewebsites.net`
-
+5. In the App Properties page, enter a SIGN-ON URL
+   
+   `https://<websitename>.azurewebsites.net For example: https://msfincontosoo365docsyncd.azurewebsites.net/
+    
    > Note: Sign-ON URL is the URL where you can sign in and use your app. 
 
-8. Enter an *App ID Uri* `https://[your-domain].onmicrosoft.com/<websitename>`
-
-   > Note: The App ID Uri used as a unique logical identifier for your app. The URI must be in a verified custom domain for an external user to grant your app access to their data in Microsoft Azure AD.
-
-9. Hit *Complete* to create the registration.
+8. Click Create to create the registration.
+ 
+9. Go back the App registrations page when the application created successfully.
 
 10. Obtain and store the Azure AD tenant ID.
 
