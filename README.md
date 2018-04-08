@@ -240,6 +240,11 @@ Contoso O365 Doc Sync Code Sample
      $bin = $cer.GetCertHash()
      $base64Thumbprint = [System.Convert]::ToBase64String($bin)
      $keyid = [System.Guid]::NewGuid().ToString()
+	 Write-Host $base64Value
+	 Write-Host "---"
+	 Write-Host $base64Thumbprint
+	 Write-Host "---"
+	 Write-Host $KeyId
      ```
 
    - Store the base64Value; $base64Thumbprint; keyid that will be used in other places.
@@ -260,7 +265,9 @@ Contoso O365 Doc Sync Code Sample
 
    - Open the solution.
    - Include the PFX certificate in ContosoO365DocSync.WebJob project. 
+   ![](Images/PFX.png)
    - Include the PFX certificate in ContosoO365DocSync.DocumentWebJob project.
+   ![](Images/PFX2.png)
 
    **For example:** contosoo365docsync.pfx.
 
