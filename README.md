@@ -70,21 +70,21 @@ Contoso O365 Doc Sync Code Sample
  
 6. Go back the App registrations page when the application created successfully.
 
-10. Search the application name and then click it. 
+7. Search the application name and then click it. 
 
    ![](Images/SearchAADApp.png)
 
-11. Click Properties. 
+8. Click Properties. 
 
    ![](Images/ClickProperties.png)
 
-12.	Enter an App ID Uri https://[your-domain].onmicrosoft.com/<websitename>
+9.	Enter an App ID Uri https://[your-domain].onmicrosoft.com/<websitename>
 	
 	> Note: For example: `ttps://cand3.onmicrosoft.com/msfincontosoo365docsyncd`
 
-13.	Hit Save to save the properties.
+10.	Hit Save to save the properties.
 
-12.	Obtain and store the Azure AD tenant ID.
+11.	Obtain and store the Azure AD tenant ID.
 
      - Click Azure Active Directory in the left menu, and the click Properties in the middle menu.
 
@@ -92,13 +92,13 @@ Contoso O365 Doc Sync Code Sample
 
 	 ![](Images/ObtainTenantId.png)
 
-13. Obtain and store the application client ID.
+12. Obtain and store the application client ID.
 
      - On the application, the GUID in Application ID is client ID and store it.
 
 	 ![](Images/ObtainApplicationId.png)
 
-14. 14.	Obtain and store the application client secret.
+13.	Obtain and store the application client secret.
 	 
 	 - On the application, click Keys.
 
@@ -114,22 +114,39 @@ Contoso O365 Doc Sync Code Sample
 
 	 - Store the copied client secret.
 
-11. Store the copied client secret.
+14. Configure the reply URLS..
 
-     - On the application, click *CONFIGURE* in the tabs menu.
+     - On the application, click Reply URLs..
 
-     - Find the *Keys* and select the *duration* for the key then click *save* at the bottom.
+       ![](Images/ClickReplyUrl.png)
 
-       ![](Images/savekey.png)
+     - Enter the https://<websitename>.azurewebsites.net/ and https://<websitename>.auzresite.net/Home/Index, then click Save.
+	 > Note: You can find the web site name in the “Create Azure Resources” section above. 
 
-     - Store the copied client secret.
+       ![](Images/SaveReplyUrl.png)
 
-       ![](Images/copykey.png)
+16.	Configure the application permissions.
 
-12. Store the application client ID
+     - On the application, click Required permissions.
 
-    - On the application,  click on *CONFIGURE* in the tabs menu.
-    - Search & copy the Client ID value and store it.
+       ![](Images/ClickRequiredPermissions.png)
+
+     - Make sure the Sign in and read user profile is selected of Windows Azure Active Directory.
+
+       ![](Images/SignInReadProfile.png)
+ 
+     - Click Add, select Office 365 SharePoint Online, select Read and write items and lists in all site collections and then click Select.
+
+       ![](Images/SPReadAndWrite.png)
+ 
+     - Click Add, select Microsoft Graph, select Create, edit, and delete items and lists in all site collections and then click Select.
+
+       ![](Images/SPCreateAndDelete.png)
+ 
+     - Click Done.
+
+       ![](Images/AppDone.png)
+
 
 
 ## Register the application in AAD for WebJob
