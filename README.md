@@ -74,6 +74,46 @@ Contoso O365 Doc Sync Code Sample
 
    ![](Images/SearchAADApp.png)
 
+11. Click Properties. 
+
+   ![](Images/ClickProperties.png)
+
+12.	Enter an App ID Uri https://[your-domain].onmicrosoft.com/<websitename>
+	
+	> Note: For example: `ttps://cand3.onmicrosoft.com/msfincontosoo365docsyncd`
+
+13.	Hit Save to save the properties.
+
+12.	Obtain and store the Azure AD tenant ID.
+
+     - Click Azure Active Directory in the left menu, and the click Properties in the middle menu.
+
+     - The GUID in Directory ID is tenant ID and store it.
+
+	 ![](Images/ObtainTenantId.png)
+
+13. Obtain and store the application client ID.
+
+     - On the application, the GUID in Application ID is client ID and store it.
+
+	 ![](Images/ObtainApplicationId.png)
+
+14. 14.	Obtain and store the application client secret.
+	 
+	 - On the application, click Keys.
+
+	 ![](Images/EnterKeysSettings.png)
+
+	 - Enter Key Name and select Expires and then click Save.
+
+	 ![](Images/SaveSecretKeys.png)
+
+	 - After saved successfully copy and story the client secret.
+
+	 ![](Images/ObtainSeretKeys.png)
+
+	 - Store the copied client secret.
+
 11. Store the copied client secret.
 
      - On the application, click *CONFIGURE* in the tabs menu.
