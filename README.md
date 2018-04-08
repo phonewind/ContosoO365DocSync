@@ -62,7 +62,7 @@ Contoso O365 Doc Sync Code Sample
 
 4. In the App Properties page, enter a SIGN-ON URL
    
-   https://<websitename>.azurewebsites.net For example: `https://msfincontosoo365docsyncd.azurewebsites.net
+   `https://<websitename>.azurewebsites.net` For example: `https://msfincontosoo365docsyncd.azurewebsites.net`
     
    > Note: Sign-ON URL is the URL where you can sign in and use your app. 
 
@@ -70,10 +70,9 @@ Contoso O365 Doc Sync Code Sample
  
 6. Go back the App registrations page when the application created successfully.
 
-10. Obtain and store the Azure AD tenant ID.
+10. Search the application name and then click it. 
 
-     - Click *VIEW ENDPOINTS* in the bottom tabs.
-     - The GUID after *`Login.microsoftonline.com/`* is the tenant ID and store it.
+   ![](Images/SearchAADApp.png)
 
 11. Store the copied client secret.
 
