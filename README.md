@@ -264,9 +264,13 @@ Contoso O365 Doc Sync Code Sample
 3. Download the project & include the certificate. 
 
    - Open the solution.
+
    - Include the PFX certificate in ContosoO365DocSync.WebJob project. 
+
    ![](Images/PFX.png)
+
    - Include the PFX certificate in ContosoO365DocSync.DocumentWebJob project.
+
    ![](Images/PFX2.png)
 
    **For example:** contosoo365docsync.pfx.
