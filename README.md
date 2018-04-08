@@ -157,17 +157,9 @@ Contoso O365 Doc Sync Code Sample
 | -------------- | ---------------------------------------- |
 | **App ID Uri** | **https://[your-domain].onmicrosoft.com/<webjobname>** |
 
-2. Click the CONFIGURE in the tabs menu and click *Add application*.
+2. Here are the app permissions needed for the Azure AD app (please select the highlighted app permission).
 
-   ![](Images/setpermission.png)
-
-3. Select *Office 365 SharePoint Online* and save it.
-
-   ![](Images/selecto365.png)
-
-4. Here is the O365 SharePoint Online app permission needed for the Azure AD App *contosoo365docsync.webjob*.
-
-![](Images/WebJobO365permission.png)
+   ![](Images/WebJobPermissions.png)
 
 
 
