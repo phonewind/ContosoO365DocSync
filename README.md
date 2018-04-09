@@ -120,7 +120,7 @@ Contoso O365 Doc Sync Code Sample
 
        ![](Images/ClickReplyUrl.png)
 
-     - Enter the https://<websitename>.azurewebsites.net/ and https://<websitename>.auzresite.net/Home/Index, then click Save.
+     - Enter the https://<websitename>.azurewebsites.net/, then click Save.
 	 > Note: You can find the web site name in the “Create Azure Resources” section above. 
 
        ![](Images/SaveReplyUrl.png)
@@ -300,6 +300,7 @@ Contoso O365 Doc Sync Code Sample
 
    | **Connection  setting **   | **Value**                                | **Notes**                                |
    | ------------------- | ---------------------------------------- | :--------------------------------------- |
+   | DefaultConnection  | The SQL server database connection string. | Encrypt it in this [section](#encrypt-the-database-connection-string) |
    | AzureWebJobsDashboard  | The Azure web job dashboard connection string. | Encrypt it in this [section](#encrypt-string) |
    | AzureWebJobsStorage  | The Azure web job storage connection string | Encrypt it in this [section](#encrypt-string) |
 
@@ -317,6 +318,64 @@ Contoso O365 Doc Sync Code Sample
 | value               | $base64Value      | Step 1.5 in this [section](#configure-the-communication-between-webjob-and-o365-tenant) |
 
 
+## Configure always encrypted feature for database
+**The application you registered and the azure resource group you created must be in same domain.** 
+
+1. Create Key Vault
+
+	1. Go to the resource group in Azure portal. ([`https://portal.azure.com`](https://portal.azure.com))
+
+	2. Click **Add** on the top menu.
+	
+		![](Images/ClickAddInResourceGroup.png)
+
+	3. In the new page, type **key vault** and then select **Key Vault**.
+	
+		![](Images/SelectKeyVault.png)
+		
+		![](Images/SelectKeyVault2.png)
+
+	4. Click **Create**.
+
+	5. Fill the form.
+
+		- Type the key vault name.
+		- Select subscription.
+		- Select the existing group.
+		- Select location.
+	
+		![](Images/KeyVaultForm.png)
+
+	6. Click **Access policies**, then click **Add new**, then click **Select principal**.
+
+		![](Images/SelectAccessPolicies.png)
+
+	7. Type the **application id** then select the application, and then click **Select**.
+
+		![](Images/AddPrincipal.png)
+
+	8. Select the following **key permissions** and then click **OK**.
+	
+		![](Images/AddKeyPermission.png)
+
+	9. Go back to Access policies page and click the user name you signed in.
+
+		![](Images/SelectUserInPolicies.png)
+	
+	10. Select the following **key permissions** and then click **OK**.
+
+		![](Images/UserPolicy.png)
+
+	11. Click **OK** in Access policies page.
+
+		![](Images/ClickOkInAccessPolicies.png)
+
+	12. Click **Create** in create key vault page.
+
+		![](Images/CreateKeyVault.png)
+	
+2. Configure encrypt columns for database
+
 
 ## Deploy the sample to Azure
 
@@ -329,7 +388,7 @@ Contoso O365 Doc Sync Code Sample
 | ida:clientSecret          | String                                | Step 11 in this [section](#register-the-application-in-azure-active-directory-for-mvc-web-app) |
 | ida:TenantID              | GUID                                  | Step 9 in this [section](#register-the-application-in-azure-active-directory-for-mvc-web-app) |
 | ida:domain                | yourtenantname.onmicrosoft.com        |                                          |
-| ida:PostLogoutRedirectUri | https://websitename.azurewebsites.net | Azure web site URL                       |
+| ida:PostLogoutRedirectUri | https://websitename.azurewebsites.net/ | Azure web site URL                       |
 | ResourceId                | https://graph.microsoft.com           | this is fixed value                      |
 | SharePointUrl           	| https://yourtenantname.sharepoint.com | The root site collection of the O365 site             
 | Key						| 18, 7, 19, 11, 24, 226, 85, 45, 88, 184, 27, 162, 37, 112, 183, 209, 241, 24, 175, 176, 176, 53, 196, 29, 24, 26, 17, 218, 131, 236, 53, 55 | Encrypt key, this is fixed value      
@@ -370,6 +429,36 @@ Contoso O365 Doc Sync Code Sample
 	- Copy and store the encrypted string
 	
 	  ![](Images/encryptstring.png)	
+
+
+## Encrypt the database connection string
+
+1. Go to the resource group in Azure portal.
+
+2. Go to the SQL database.
+
+	![](Images/SelectDatabaseInResourceGroup.png)	
+
+3. Obtain and store the **server address** and **catalog name**.
+
+	![](Images/ShowDatabaseConnectionString.png) 
+
+	![](Images/DatabaseServerAddress.png)
+
+4. Edit the connection string below and then store it.
+
+	`
+	Data Source={server address};Initial Catalog={catalog name};User Id={user name};Password={password};MultipleActiveResultSets=False;Encrypt=True;Column Encryption Setting=Enabled;
+	`
+	
+	> For example: 
+	> Data Source=tcp:msfincontosoo365docsyncd.database.windows.net,1433;Initial Catalog=contosoo365docsyncd;
+	> User Id=contosoo365doc;Password=12345678;MultipleActiveResultSets=False;Encrypt=True;Column Encryption Setting=Enabled;
+	
+
+5. Encrypt the connection string in this [section](#encrypt-string) and then store the encrypted connection string.
+
+	![](Images/EncryptedConnectionString.png)
 
 
 ## Upload the Add-in manifest file
