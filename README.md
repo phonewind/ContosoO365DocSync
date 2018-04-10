@@ -12,9 +12,13 @@ Contoso O365 Doc Sync Code Sample
 
 [Configure the communication between WebJob and O365 tenant](#configure-the-communication-between-webjob-and-o365-tenant)
 
+[Configure always encrypted feature for database](#configure-always-encrypted-feature-for-database)
+
 [Deploy the sample to Azure](#deploy-the-sample-to-azure)
 
 [Encrypt string](#encrypt-string)
+
+[Encrypt the database connection string](#encrypt-the-database-connection-string)
 
 [Upload the Add-in manifest file](#upload-the-add-in-manifest-file)
 
@@ -80,7 +84,7 @@ Contoso O365 Doc Sync Code Sample
 
 9.	Enter an App ID Uri https://[your-domain].onmicrosoft.com/<websitename>
 	
-	> Note: For example: `ttps://cand3.onmicrosoft.com/msfincontosoo365docsyncd`
+	> Note: For example: `https://cand3.onmicrosoft.com/msfincontosoo365docsyncd`
 
 10.	Hit Save to save the properties.
 
@@ -321,7 +325,7 @@ Contoso O365 Doc Sync Code Sample
 ## Configure always encrypted feature for database
 **The application you registered and the azure resource group you created must be in same domain.** 
 
-1. Create Key Vault
+1. Create Key Vault.
 
 	1. Go to the resource group in Azure portal. ([`https://portal.azure.com`](https://portal.azure.com))
 
@@ -374,7 +378,54 @@ Contoso O365 Doc Sync Code Sample
 
 		![](Images/CreateKeyVault.png)
 	
-2. Configure encrypt columns for database
+2. Configure encrypt columns for database.
+	
+	>**Prerequisites**: [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) version 13.0.700.242 or later.
+
+	1. Open SQL Server Management Studio.
+
+	2. Connect to the database.
+	
+		>**Note**: You can find the server name, login name and password from the connection string in application settings page in Azure.
+
+		![](Images/ConnectionToDatabase.png)
+
+	3. Expand the database and table, then right click on **SourcePoints**, then select **Encrypt Columns**.
+
+		![](Images/EncryptTheSourcePoints.png)
+
+	4. Click **Next** in **Introduction** page.
+
+	5. Select the **encryption type** and **key** as below and then click **Next**.
+
+		![](Images/SelectColumnsInSP.png)
+
+	6. Configure master key and then click **Next**.
+
+		- Select auto generate column master key.
+		- Select Azure Key Vault.
+		- Select subscription.
+		- Select the key vault you created.
+
+		![](Images/ConfigMasterKey.png)
+
+	7. In the **Run Settings** page, select **Proceed to finish now** and then click **Next**.
+
+	8. In the **Summary** page, click **Finish to verify that the settings are all correct** and then click **Close** to complete the setup for Always Encrypted.
+
+	9. Right click on **PublishedHistories** and then select **Encrypt Columns**.
+
+	10. Click **Next**.
+
+	11. Select the **encryption type** and **key** as below and then click **Next**.
+
+		![](Images/SelectColumnsInPH.png)
+
+	12. Click **Next** in **Master Key Configuration** page.
+
+	13. Select **proceed to finish now** and click **Next** in **Run Settings** page.
+
+	14. Click **Finish** in **Summary** page.
 
 
 ## Deploy the sample to Azure
@@ -455,7 +506,6 @@ Contoso O365 Doc Sync Code Sample
 	> Data Source=tcp:msfincontosoo365docsyncd.database.windows.net,1433;Initial Catalog=contosoo365docsyncd;
 	> User Id=contosoo365doc;Password=12345678;MultipleActiveResultSets=False;Encrypt=True;Column Encryption Setting=Enabled;
 	
-
 5. Encrypt the connection string in this [section](#encrypt-string) and then store the encrypted connection string.
 
 	![](Images/EncryptedConnectionString.png)
